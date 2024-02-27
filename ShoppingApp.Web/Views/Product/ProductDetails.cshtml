@@ -1,0 +1,137 @@
+﻿@model ShoppingDemoApp.Web.Models.ProductViewModel
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            
+
+            <div class="col-sm-12 padding-right">
+                @if (Model != null && Model.ProductId != 0)
+                {
+
+
+                <div class="product-details">
+                    <!--product-details-->
+                    <div class="col-sm-5">
+                        <div class="view-product">
+                            <img id="mainProdImage" src="@Model.ProductDisplayImage" height="400" alt="" />
+                            
+                        </div>
+                        <div id="similar-product" class="carousel slide" data-ride="carousel" style="width:80%;">
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    @{
+                                        foreach (var imgPath in Model.ProductImages)
+                                        {
+                                            <a><img class="small-img-prod" src="@imgPath" alt="" height="55" width="55"></a>
+                                        }
+                                    }
+                                    
+                                    
+                                </div>
+                                <div class="item">
+                                    @{
+                                        foreach (var imgPath in Model.ProductImages)
+                                        {
+                                            <a ><img class="small-img-prod" src="@imgPath" alt="" height="55" width="55"></a>
+                                        }
+                                    }
+                                </div>
+                                
+
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left item-control" href="#similar-product" data-slide="prev">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a class="right item-control" href="#similar-product" data-slide="next">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="product-information">
+                            <!--/product-information-->
+                            <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                            <h2>@Model.ProductName</h2>
+                            <p>@Model.CategoryName</p>
+                            
+                            <span>
+                                <span>US $@Model.Price</span>
+                                @*<label>Quantity:</label>
+                                <input type="text" value="1" />*@
+                                <button type="button" onclick="AddProductToCart('@Model.ProductId')" class="btn btn-fefault cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    Add to cart
+                                </button>
+                            </span>
+                            <p><b>Availability:</b> In Stock</p>
+                            <p><b>Condition:</b> New</p>
+                            <p><b>Brand:</b> LED</p>
+                            
+                        </div><!--/product-information-->
+                    </div>
+                </div>
+                <div class="category-tab shop-details-tab">
+                    <!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#reviews" data-toggle="tab">Description</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="reviews">
+                            <div class="col-sm-12">
+                                <p>@Model.Description</p>
+                                <br />
+                                <div class="table-responsive cart_info">
+                                    <table id="tblCart" class="table-desc">
+                                        <tr>
+                                            <td>Model Name</td>
+                                            <td>@Model.ModelName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Category</td>
+                                            <td>@Model.CategoryName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Color</td>
+                                            <td>@Model.Color</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Warranty</td>
+                                            <td>@Model.Warranty</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        }
+                                        else {
+                                            <div>
+                                                No Product Found.
+                </div> 
+                                        }
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hdnAddtoCartUrl" value="@Url.Action("AddProductToCart","Product")" />
+</section>
+
+@section scripts {
+
+    <script src="~/Scripts/AppJs/ProductDetails.js"></script>
+<script src="~/Scripts/AppJs/ProductList.js"></script>
+}
+
+

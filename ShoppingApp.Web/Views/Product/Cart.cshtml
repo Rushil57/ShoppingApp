@@ -1,0 +1,21 @@
+﻿@model List<ShoppingDemoApp.Web.Models.ProductViewModel>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("ProductList", "Product")">Home</a></li>
+                <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+        @Html.Partial("_CartDetails",Model);
+    </div>
+</section> <!--/#cart_items-->
+
+@section scripts {
+    <script src="~/Scripts/AppJs/ProductCart.js"></script>
+}

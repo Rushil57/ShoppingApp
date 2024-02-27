@@ -1,0 +1,97 @@
+﻿@using ShoppingDemoApp.Web.Models;
+@{ 
+    var ProductList = new List<ProductViewModel>();
+    if (Model != null) {
+        ProductList = (List<ProductViewModel>)Model;
+    }
+}
+<div class="table-responsive cart_info">
+    <table id="tblCart" class="table table-condensed">
+        <thead>
+            <tr class="cart_menu">
+                <td class="image">Item</td>
+                <td class="description">Description</td>
+                <td class="price">Price</td>
+                <td class="quantity">Quantity</td>
+                <td class="total">Total</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (ProductList.Count() > 0)
+                {
+                    foreach (var item in ProductList)
+                    {
+                        <tr class="main-tr" data-price="@item.Price" data-productid="@item.ProductId">
+                            <td class="cart_product">
+                                <a><img src="@item.ProductDisplayImage" alt="" height="150" width="150"></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a>@item.ProductName</a></h4>
+                                <p>@item.CategoryName</p>
+                            </td>
+                            <td class="cart_price">
+                                <p>$@item.Price</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <a class="cart_quantity_up" onclick="CalculateQty(this,'Add')"> + </a>
+                                    <input class="cart_quantity_input" onchange="qtyChanged(this)" type="text" name="quantity" value="@item.Qty" autocomplete="off" size="2">
+                                    <a class="cart_quantity_down" onclick="CalculateQty(this,'Remove')"> - </a>
+                                </div>
+                            </td>
+                            <td class="cart_total" style="width:12%;">
+                                <p class="cart_total_price">$@item.TotalAmount</p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" onclick="RemoveProductFromCart(this,'@item.ProductId')"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+                    if (ViewBag.IsCheckout != null && ViewBag.IsCheckout)
+                    {
+                        <tr class="subtotal-tr">
+                            <td colspan="4">&nbsp;</td>
+                            <td colspan="2">
+                                <table class="table table-condensed total-result">
+                                    <tr>
+                                        <td>Cart Sub Total</td>
+                                        <td id="cart-sub-total"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Exo Tax</td>
+                                        <td id="cart-exo-tax"></td>
+                                    </tr>
+                                    <tr class="shipping-cost">
+                                        <td>Shipping Cost</td>
+                                        <td>Free</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><span id="cart-final-total"></span></td>
+                                    </tr>
+                                </table>
+                                <input type="hidden" id="hdnIsCheckout" value="true" />
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            No data in cart !
+                        </td>
+                    </tr>
+                }
+                
+            }
+        </tbody>
+    </table>
+    <input type="hidden" id="hdnRemoveFromCartUrl" value="@Url.Action("RemoveProductFromCart","Product")" />
+    <input type="hidden" id="hdnUpdateProductListUrl" value="@Url.Action("UpdateProductList","Product")" />
+    
+</div>
+
+

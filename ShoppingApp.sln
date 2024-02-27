@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingDemoApp.DAL", "ShoppingDemoApp.DAL\ShoppingDemoApp.DAL.csproj", "{CA02A3AB-8B95-4143-9BF0-0A2276A49D77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingDemoApp.Web", "ShoppingDemoApp.Web\ShoppingDemoApp.Web.csproj", "{EA018EE8-6306-452A-A876-5E4B6A0B0BF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA02A3AB-8B95-4143-9BF0-0A2276A49D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA02A3AB-8B95-4143-9BF0-0A2276A49D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA02A3AB-8B95-4143-9BF0-0A2276A49D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA02A3AB-8B95-4143-9BF0-0A2276A49D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA018EE8-6306-452A-A876-5E4B6A0B0BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA018EE8-6306-452A-A876-5E4B6A0B0BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA018EE8-6306-452A-A876-5E4B6A0B0BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA018EE8-6306-452A-A876-5E4B6A0B0BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
